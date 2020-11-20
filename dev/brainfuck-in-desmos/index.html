@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script>
+            //thanks https://stackoverflow.com/questions/18099653/removing-everything-except-numbers-in-a-string
+            function filterCode(str) {
+                var numericalChar = new Set([">","<","+","-",".",",","[","]"]);
+                return str.split("").filter(char => numericalChar.has(char)).join("");
+            }
+
+            function convert() {
+                document.getElementById("numbers").value = filterCode(document.getElementById("code").value).replaceAll(",","5,").replaceAll(">","0,").replaceAll("<","1,").replaceAll("+","2,").replaceAll("-","3,").replaceAll(".","4,").replaceAll("[","6,").replaceAll("]","7,").slice(0, -1)
+            }
+        </script>
+    </head>
+    <body>
+        <aside style="width:33%; float:left">
+            <h1>Brainfuck interpreter in Desmos.</h1>
+
+            <p>Made by bychtromae#1766</p><br>
+
+            <p>Put your brainfuck code in the textbox below, press the "convert to numbers" button, and paste the numbers returned into the pgrm array.</p>
+
+            <textarea id="code" style="resize: none; width:100%; height:20vh;"></textarea>
+            <button onclick="convert()">Convert to numbers</button>
+            <textarea id="numbers" readonly style="resize: none; width:100%; height:20vh;"></textarea>
+        </aside>
+        <iframe src="https://www.desmos.com/calculator/rnnczwwnqx" style="border: 1px solid #ccc;width:66%;height:calc(100vh - 25px);float:right;" frameborder=0></iframe>
+    </body>
+</html>
