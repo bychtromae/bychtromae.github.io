@@ -5,4 +5,12 @@ html, body {
 
 canvas {
     position: absolute;
+    border: 1px solid #000;
+}
+
+.menu {
+    position: absolute;
+    min-width: 250px;
+    z-index: 10;
+    padding: 10px;
 }

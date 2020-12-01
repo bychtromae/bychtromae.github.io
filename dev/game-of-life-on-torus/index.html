@@ -5,6 +5,50 @@
         <script src="index.js"></script>
     </head>
     <body>
-        <canvas id="canvas"></canvas>
+    <div class="menu" id="leftmenu" >
+        <h1>Conway's game of life on a 3 dimensional torus.</h1>
+        <br>
+        <p>Made by bychtromae#1766.</p>
+        <br>
+        <p>Conway's game of life except if any cell's neighborhood that is at the edge of the grid, it will include a part of the opposite edge, basically if each edge were wrapped around to meet their opposide edge, like in a torus.</p>
+    </div>
+    <canvas id="canvas"></canvas>
+    <div class="menu" id="rightmenu" >
+        <p id="generation">Generation 0</p>
+        <p>Change grid size:</p>
+        <input type="range" min="6" max="200" value="6" class="slider" id="gridSizeSlider">
+        <p style="display: inline" id="gridSizeValueDisplay">6</p>
+        <br><br>
+        <p>Change run speed:</p>
+        <input type="range" min="1" max="200" value="10" class="slider" id="speedSlider">
+        <p style="display: inline" id="speedValueDisplay">10</p>
+        <br><br>
+        <button onclick="clearGrid();">clear grid</button>
+        <br><br>
+        <button id="playorpause">Pause simulation</button>
+        <br><br>
+        <button id="step">Step simulation</button>
+        <br><br><br>
+        <button id="save">Save grid to .json</button>
+        <br><br>
+        <p>Load grid from .json (click the "Choose file" button below, select your file, then click Load.)</p>
+        <input type="file" id="loadGridJSON"></input>
+        <br>
+        <button id="load">Load</button>
+        <!--<br>
+        <p>Load from preset</p>
+        <input list="presets"> 
+        <datalist id="presets"> 
+            <option value="Glider" /> 
+            <option value="Spaceship" /> 
+            <option value="Gosper Glider Gun" />
+            <option value="R-Pentomino" />
+            <option value="Diehard" /> 
+            <option value="Acorn" />
+            <option value="Random" /> 
+             
+
+        </datalist> -->
+    </div>
     </body>
 </html>
