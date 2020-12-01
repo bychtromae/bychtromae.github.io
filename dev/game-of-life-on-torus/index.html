@@ -2,6 +2,7 @@
 <html>
     <head>
         <link rel="stylesheet" type="text/css" href="style.css">
+        <script src="presets.js"></script>
         <script src="index.js"></script>
     </head>
     <body>
@@ -10,7 +11,7 @@
         <br>
         <p>Made by bychtromae#1766.</p>
         <br>
-        <p>Conway's game of life except if any cell's neighborhood that is at the edge of the grid, it will include a part of the opposite edge, basically if each edge were wrapped around to meet their opposide edge, like in a torus.</p>
+        <p>(also known as periodic boundary conditions) Conway's game of life except if any cell's neighborhood that is at the edge of the grid, it will include a part of the opposite edge, basically if each edge were wrapped around to meet their opposide edge, like in a torus.</p>
     </div>
     <canvas id="canvas"></canvas>
     <div class="menu" id="rightmenu" >
@@ -35,20 +36,20 @@
         <input type="file" id="loadGridJSON"></input>
         <br>
         <button id="load">Load</button>
-        <!--<br>
+        <bdi>
         <p>Load from preset</p>
-        <input list="presets"> 
-        <datalist id="presets"> 
-            <option value="Glider" /> 
-            <option value="Spaceship" /> 
-            <option value="Gosper Glider Gun" />
-            <option value="R-Pentomino" />
-            <option value="Diehard" /> 
-            <option value="Acorn" />
-            <option value="Random" /> 
-             
-
-        </datalist> -->
+        <select id="loadPreset"> 
+            <option value="glider">Glider</option>
+            <option value="lightship">Light-weight Spaceship</option>
+            <option value="ship">Middle-weight Spaceship</option>
+            <option value="heavyship">Heavy-weight Spaceship</option>
+            <option value="glidergun">Gosper Glider Gun</option>
+            <option value="pulsar">Pulsar</option>
+            <option value="pentadecathlon">Penta-decathlon</option>
+            <option value="rpentomino">R-Pentomino</option>
+            <option value="acorn">Acorn</option>
+            <option value="random">Random</option>
+        </select>
     </div>
     </body>
 </html>

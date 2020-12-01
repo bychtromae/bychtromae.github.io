@@ -35,7 +35,7 @@ window.addEventListener('DOMContentLoaded', () => {
         [1,1,1,0,0,0],
         [0,0,0,0,0,0],
         [0,0,0,0,0,0],
-        [0,0,0,0,0,0],
+        [0,0,0,0,0,0]
     ];
 
 
@@ -68,8 +68,8 @@ window.addEventListener('DOMContentLoaded', () => {
     }*/
 
     //empty
-    /*let w = 100;
-    let h = 100;
+    /*let w = 12;
+    let h = 12;
     let grid = new Array(h);
     for (let y = 0; y < h; y++) {
         grid[y] = new Array(w);
@@ -83,7 +83,7 @@ window.addEventListener('DOMContentLoaded', () => {
     let generation = 0;
 
     (function(){
-        if (typeof(grid[0][0]) != "undefined" && running) {
+        if (typeof(grid[0]) != "undefined" && typeof(grid[0][0]) != "undefined" && running) {
             renderGrid(ctx, grid, generation);
             grid = stepSimulation(grid);
             generation += 1;
@@ -160,10 +160,10 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 
     document.getElementById("load").onclick = function () {
-        var file = document.getElementById("loadGridJSON").files[0];
+        let file = document.getElementById("loadGridJSON").files[0];
         const reader = new FileReader()
         reader.onload = function () {
-            var contents = reader.result;
+            let contents = reader.result;
             loadGrid(JSON.parse(contents));
         };
         reader.readAsText(file)
@@ -175,6 +175,28 @@ window.addEventListener('DOMContentLoaded', () => {
         document.getElementById("gridSizeSlider").value = grid.length;
         document.getElementById("gridSizeValueDisplay").innerHTML = grid.length;
     }
+
+    document.getElementById("loadPreset").addEventListener('change', (event) => {
+        let preset = event.target.value;
+        if (typeof(presets[preset]) != "undefined") {
+            console.log(presets[preset]);
+            loadGrid(presets[preset]);
+        } else {
+            if (preset === "random") {
+                let w = grid[0].length;
+                let h = grid.length;
+                let newGrid = new Array(h);
+                for (let y = 0; y < h; y++) {
+                    newGrid[y] = new Array(w);
+                    for (let x = 0; x < w; x++) {
+                        newGrid[y][x] = Math.floor(Math.random()*2);
+                    }
+                }
+                console.log(newGrid);
+                loadGrid(newGrid);
+            }
+        }
+    });
 });
 
 function clearGrid() {};
@@ -238,12 +260,14 @@ function getNeighbors(grid, x, y) {
 function renderGrid(ctx, grid, generation) {
     document.getElementById("generation").innerHTML = "Generation " + generation;
     ctx.clearRect(0, 0, 1000, 1000);
-    let w = grid[0].length;
-    let h = grid.length;
-    for (let x = 0; x < w; x++) {
-        for (let y = 0; y < h; y++) {
-            if (grid[y][x] == 1) {
-                ctx.fillRect(1000/w*x, 1000/h*y, 1000/w, 1000/h);
+    if (grid.length != 0) {
+        let w = grid[0].length;
+        let h = grid.length;
+        for (let x = 0; x < w; x++) {
+            for (let y = 0; y < h; y++) {
+                if (grid[y][x] == 1) {
+                    ctx.fillRect(1000/w*x, 1000/h*y, 1000/w, 1000/h);
+                }
             }
         }
     }
