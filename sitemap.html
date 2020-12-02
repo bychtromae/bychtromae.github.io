@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<head>
+    <style>
+        ul, #sitemap {
+            list-style-type: none;
+        }
+
+        #sitemap {
+            margin: 0;
+            padding: 0;
+        }
+
+        .nested {
+            display: none;
+        }
+
+        .active {
+            display: block;
+        }
+
+        .caret {
+            cursor: pointer;
+            -webkit-user-select: none; /* Safari 3.1+ */
+            -moz-user-select: none; /* Firefox 2+ */
+            -ms-user-select: none; /* IE 10+ */
+            user-select: none;
+        }
+
+        .caret::after {
+            content: "\25FF";
+            color: black;
+            display: inline-block;
+            margin-right: 6px;
+        }
+
+        .caret-down::after {
+            -ms-transform: rotate(45deg); /* IE 9 */
+            -webkit-transform: rotate(45deg); /* Safari */
+            transform: rotate(45deg);  
+        }
+
+        .nested {
+            display: none;
+        }
+
+        .active {
+            display: block;
+        }
+    </style>
+    <script>
+        window.addEventListener('DOMContentLoaded', (event) => {
+            let toggler = document.getElementsByClassName("caret");
+            
+            for (let i = 0; i < toggler.length; i++) {
+                toggler[i].addEventListener("click", function() {
+                    this.parentElement.querySelector(".nested").classList.toggle("active");
+                    this.classList.toggle("caret-down");
+                });
+            }
+        });
+    </script>
+</head>
+<html>
+    <body>
+        <p>Last updated 12/2/2020.</p>
+        <ul id="sitemap">
+            <li><span class="caret"><a href="http://bychtromae.github.io/">bychtromae.github.io/</a></span>
+                <ul class="nested">
+                    <li><span class="caret"><a href="http://bychtromae.github.io/dev/">dev/</a></span>
+                        <ul class="nested">
+                            <li><span class="caret"><a href="http://bychtromae.github.io/dev/brainfuck-in-desmos">brainfuck-in-desmos/</a></span>
+                                <ul class="nested">
+                                    <li><a href="http://bychtromae.github.io/dev/brainfuck-in-desmos/index.html">index.html</a></li>
+                                </ul>
+                            </li>
+                            <li><span class="caret"><a href="http://bychtromae.github.io/dev/game-of-life-on-torus/">game-of-life-on-torus/</a></span>
+                                <ul class="nested">
+                                    <li><a href="http://bychtromae.github.io/dev/game-of-life-on-torus/index.html">index.html</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><span class="caret"><a href="http://bychtromae.github.io/misc/">misc/</a></span>
+                        <ul class="nested">
+                            <li><span class="caret"><a href="http://bychtromae.github.io/misc/goodevening/">goodevening/</a></span>
+                                <ul class="nested">
+                                    <li><a href="http://bychtromae.github.io/misc/goodevening/index.html">index.html</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><span class="caret"><a href="http://bychtromae.github.io/papers/">papers/</a></span>
+                        <ul class="nested">
+                            <li><span class="caret"><a href="http://bychtromae.github.io/papers/languages/">languages/</a></span>
+                                <ul class="nested">
+                                    <li><span class="caret"><a href="http://bychtromae.github.io/papers/languages/GLDLang">GLDLang/</a></span>
+                                        <ul class="nested">
+                                            <li><span class="caret"><a href="http://bychtromae.github.io/papers/languages/GLDLang/images/">images/</a></span>
+                                                <ul class="nested">
+                                                </ul>
+                                            </li>
+                                            <li><a href="http://bychtromae.github.io/papers/languages/GLDLang/index.html">index.html</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><a href="http://bychtromae.github.io/index.html">index.html</a></li>
+                    <li><a href="http://bychtromae.github.io/sitemap.html">sitemap.html</a></li>
+                </ul>
+            </li>
+        </ul>
+    </body>
+</html>
